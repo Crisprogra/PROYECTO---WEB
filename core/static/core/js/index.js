@@ -253,7 +253,7 @@ $(document).ready(function () {
         .classList.add("hide");
       console.log("2");
       let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-      if (!regexEmail.test(id_correoUsuario.value)) {
+      if (!regexEmail.test(id_correoContacto.value)) {
         document
           .getElementsByName("joinusNameAlertCorreoFormatoContacto")[0]
           .classList.remove("hide");

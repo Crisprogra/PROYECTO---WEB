@@ -1,18 +1,18 @@
+
 from django.db import models
 
 # Create your models here.
 
 class registro(models.Model):
-    nombreUsuario = models.CharField(primary_key=True,max_length=50,verbose_name='Nombre del usuario')
-    correoUsuario = models.CharField(max_length=100,verbose_name='Correo del usuario')
-    nombre = models.CharField(max_length=50,verbose_name='Nombre')
-    apellidoPaterno = models.CharField(max_length=50,verbose_name='Apellido paterno')
-    apellidoMaterno = models.CharField(max_length=50,verbose_name='Apellido materno')
+    username = models.CharField(primary_key=True,max_length=50,verbose_name='Nombre del usuario')
+    email = models.CharField(max_length=100,verbose_name='Correo del usuario')
+    first_name = models.CharField(max_length=50,verbose_name='Nombre')
+    last_name = models.CharField(max_length=50,verbose_name='Apellidos')
     direccion = models.CharField(max_length=100,verbose_name='Direccion')
-    passwordUsuario = models.CharField(max_length=200,verbose_name='Contraseña del usuario')
+    password = models.CharField(max_length=200,verbose_name='Contraseña del usuario')
 
     def __str__(self) :
-        return  self.nombreUsuario
+        return  self.username
 
 
 class producto(models.Model):
@@ -35,3 +35,4 @@ class contacto(models.Model):
     def __str__(self) :
         return  self.nombreContacto
     
+

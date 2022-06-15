@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from .forms import RegistroForm, ContactoForm
+from .forms import RegistroForm, ContactoForm, CustomUserForm
 from .models import producto
 # Create your views here.
 def index(request):
@@ -15,6 +15,12 @@ def index3(request):
 def index4(request):
     return render(request,'core/index4.html')
 
+def registro(request):
+        datos_registro = {
+            'form': CustomUserForm()
+        }
+        return render(request,'core/registration/registrar.html',datos_registro)
+    
 
 def formulario_registro(request):
         datos_registro = {

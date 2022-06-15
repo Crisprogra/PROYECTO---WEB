@@ -2,13 +2,14 @@ from dataclasses import fields
 from django import forms
 from django.forms import ModelForm
 from .models import contacto, registro
+from django.contrib.auth.forms import UserCreationForm
 
 #creando una clase para el formulario desde la base de datos
 class RegistroForm(ModelForm):
 
     class Meta:
         model = registro
-        fields = ['nombreUsuario','correoUsuario','nombre','apellidoPaterno','apellidoMaterno','direccion','passwordUsuario']
+        fields = ['username','email','first_name','last_name','direccion','password']
 
 
 class ContactoForm(ModelForm):
@@ -16,3 +17,9 @@ class ContactoForm(ModelForm):
     class Meta:
         model = contacto
         fields = ['nombreContacto','correoContacto','comentarioContacto']
+
+
+class CustomUserForm(UserCreationForm):
+
+    
+    pass

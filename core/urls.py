@@ -1,5 +1,7 @@
+from django import urls
 from django.urls import path
-from .views import index, index2, index3, index4, formulario_registro
+from .views import index, index2, index3, index4, formulario_registro, registro
+
 
 urlpatterns =[
     path('',index,name="index"),
@@ -7,6 +9,10 @@ urlpatterns =[
     path('Tienda',index3,name="index3"),
     path('Contacto',index4,name="index4"),
     path('Registro',formulario_registro,name="formulario_registro"),
+    path('Registrar',registro,name="registro"),
+
+   
+
 
 
 ]

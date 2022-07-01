@@ -42,22 +42,7 @@
       </div>
       <main>
         <div class="container">
-          <header class="d-flex justify-content-center py-2">
-            <ul class="nav nav-pills">
-              <li class="nav-item">
-                <a href="http://127.0.0.1:8000/" class="nav-link">Home</a>
-              </li>
-              <li class="nav-item">
-                <a href="Sobre Nosotros" class="nav-link">Sobre Nosotros</a>
-              </li>
-              <li class="nav-item">
-                <a href="Tienda" class="nav-link">Tienda</a>
-              </li>
-              <li class="nav-item">
-                <a href="Contacto" class="nav-link">Contacto</a>
-              </li>
-            </ul>
-          </header>
+          <header class="d-flex justify-content-center py-2"></header>
         </div>
       </main>
     </header>
@@ -74,7 +59,7 @@
     <br />
 
     <div class="formulario_login col-lg-3 col-md-3 col">
-      <form method="post" action="" id="formulariologin">
+      <form method="post" action="" id="">
         {% csrf_token %}
         <div class="form-group">{{ form }}</div>
 
@@ -84,6 +69,9 @@
           id="enviar"
           value="Ingresar"
         />
+        <li>
+          <a href="http://127.0.0.1:8000/">Ir al Home</a>
+        </li>
 
         <div id="error" class="alert alert-danger hide" role="alert">
           {{ message }}

@@ -42,33 +42,11 @@
         </div>
 
         <div class="col-lg-3 col-md-4 col-12 mt-4">
-          {%load static%}
-          <div class="col">
-            <img
-              src="{% static 'core/imagenes/login.jpg'%}"
-              class="img-center"
-              id="imagen_login"
-            />
-          </div>
-          <div class="row mt-3">
-            <a
-              href="{% url 'login' %}"
-              class="btn btn-primary"
-              type="button"
-              id="btnlogin"
-              >Iniciar Sesión</a
-            >
-          </div>
-
-          <div class="row mt-3">
-            <a
-              href="Registrar"
-              class="btn btn-primary"
-              type="button"
-              id="btnregistro"
-              >Registrarme</a
-            >
-          </div>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a href="#" id="usuario_conectado">@{{user.username}}</a>
+          </li>
+          {% endif %}
         </div>
       </div>
     </header>
@@ -88,6 +66,17 @@
             <li class="nav-item">
               <a href="Contacto" class="nav-link">Contacto</a>
             </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'logout' %}" class="nav-link">Cerrar Sesión</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'login' %}" class="nav-link">Iniciar Sesión</a>
+            </li>
+
+            {% endif %}
           </ul>
         </header>
       </div>

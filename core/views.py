@@ -8,6 +8,9 @@ from django.contrib import messages
 def index(request):
     return render(request,'core/index.html')
 
+def home2(request):
+    return render(request,'core/home2.html')
+
 def index2(request):
     return render(request,'core/index2.html')
 

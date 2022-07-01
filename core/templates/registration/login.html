@@ -17,7 +17,6 @@
       rel="stylesheet"
       href="{% static 'core/estilos/style.css'%}"
     />
-    <meta http-equiv="Last-Modified" content="0" />
     <!--titulo de la pagina y tipo de fuente de google fonts-->
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,272 +34,63 @@
         <div class="col-lg-3 col-md-4 col-12">
           <img src="{% static 'core/imagenes/logo.jpg'%}" class="img-fluid" />
         </div>
-
         <div class="col-lg col-md col bg-gradient">
           <h1 class="mt-5"><a href="http://127.0.0.1:8000/"> Michiguau </a></h1>
           <p class=" ">Tienda de accesorios para tus mascotas</p>
         </div>
-
-        <div class="col-lg-3 col-md-4 col-12 mt-4">
-          {%load static%}
-          <div class="col">
-            <img
-              src="{% static 'core/imagenes/login.jpg'%}"
-              class="img-center"
-              id="imagen_login"
-            />
-          </div>
-          <div class="row mt-3">
-            <a
-              href="{% url 'login' %}"
-              class="btn btn-primary"
-              type="button"
-              id="btnlogin"
-              >Iniciar Sesión</a
-            >
-          </div>
-
-          <div class="row mt-3">
-            <a
-              href="Registrar"
-              class="btn btn-primary"
-              type="button"
-              id="btnregistro"
-              >Registrarme</a
-            >
-          </div>
+        <div class="col-lg-3 col-md-4 col-12"></div>
+      </div>
+      <main>
+        <div class="container">
+          <header class="d-flex justify-content-center py-2">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a href="http://127.0.0.1:8000/" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="Sobre Nosotros" class="nav-link">Sobre Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a href="Tienda" class="nav-link">Tienda</a>
+              </li>
+              <li class="nav-item">
+                <a href="Contacto" class="nav-link">Contacto</a>
+              </li>
+            </ul>
+          </header>
         </div>
-      </div>
+      </main>
     </header>
-    <main>
-      <div class="container">
-        <header class="d-flex justify-content-center py-2">
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a href="http://127.0.0.1:8000/" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="Sobre Nosotros" class="nav-link">Sobre Nosotros</a>
-            </li>
-            <li class="nav-item">
-              <a href="Tienda" class="nav-link">Tienda</a>
-            </li>
-            <li class="nav-item">
-              <a href="Contacto" class="nav-link">Contacto</a>
-            </li>
-          </ul>
-        </header>
-      </div>
-    </main>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
-    <!--
-    <div class="row">
-      <div class="col-lg-2 col-md-2 col-2">
-        <h1 class="text-align: left">Registrarse</h1>
-      </div>
+    <br />
+    <div class="row -lg-3 col-md-3 col">
+      <h1 class="title">Iniciar Sesion</h1>
     </div>
-    
-    
-    <div class="formulario_contacto col-lg-6 col-md-6 col">
-      <form name="joinus" id="joinusRegistro">
-        <div class="form-group">
-          <label>Nombre completo</label>
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Ej: Claudia Gomez Quezada"
-            name="name"
-            id="joinusNameRegistro"
-          />
-          <div
-            class="alert alert-danger hide"
-            role="alert"
-            name="joinusNameAlertNameRegistro"
-          >
-            Debes rellenar el nombre
-          </div>
-        </div>
+    <br />
 
-        <div class="form-group">
-          <label>Correo eléctronico</label>
-          <input
-            class="form-control"
-            type="email"
-            placeholder="Ej: tucorreo@gmail.com"
-            name="email"
-            id="joinusEmailRegistro"
-          />
-          <div
-            class="alert alert-danger hide"
-            role="alert"
-            name="joinusNameAlertCorreoRegistro"
-          >
-            Debes rellenar el correo
-          </div>
-          <div
-            class="alert alert-danger hide"
-            role="alert"
-            name="joinusNameAlertCorreoFormatoRegistro"
-          >
-            Error de formato en el correo
-          </div>
-        </div>
+    <div class="formulario_login col-lg-3 col-md-3 col">
+      <form method="post" action="" id="formulariologin">
+        {% csrf_token %}
+        <div class="form-group">{{ form }}</div>
 
-        <br />
+        <input
+          type="submit"
+          class="btn btn-primary mt-3"
+          id="enviar"
+          value="Ingresar"
+        />
 
-        <div>
-          <button type="submit" class="btn btn-outline-primary">
-            Registrarme
-          </button>
-          <button type="reset" class="btn btn-outline-danger">
-            Borrar Datos
-          </button>
+        <div id="error" class="alert alert-danger hide" role="alert">
+          {{ message }}
         </div>
       </form>
-    </div>
-    -->
-    <br /><br />
-    <div
-      id="carouselExampleSlidesOnly"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-inner">
-        {%load static%}
-        <div class="carousel-item active">
-          <img
-            src="{% static 'core/imagenes/perritogatito.jpg'%}"
-            class="d-block w-100"
-            alt="PERRITO CARRUSEL"
-          />
-        </div>
-        {%load static%}
-        <div class="carousel-item">
-          <img
-            src="{% static 'core/imagenes/grupoperros.jpg'%}"
-            class="d-block w-100"
-            alt="PERRITO BLANCO CARRUSEL"
-          />
-        </div>
-        {%load static%}
-        <div class="carousel-item">
-          <img
-            src="{% static 'core/imagenes/perroscomiendo.jpg'%}"
-            class="d-block w-100"
-            alt=""
-          />
-        </div>
-      </div>
-    </div>
-
-    <div id="comp-iljh9ssj" class="_2Hij5 mt-5" data-testid="richTextElement">
-      <h4
-        class="font_4"
-        style="line-height: normal; text-align: center; font-size: 35px"
-      >
-        <span id="span_celeste" style="letter-spacing: normal"
-          >Tenemos todo lo que necesita tu mascota</span
-        >
-      </h4>
-    </div>
-    <div id="comp-iljh9st8" class="_2Hij5" data-testid="richTextElement">
-      <p
-        id="parrafo_span_pequeño"
-        class="font_8"
-        style="text-align: center; line-height: normal; font-size: 15px"
-      >
-        <span id="span_pequeño" style="letter-spacing: normal"
-          >Tenemos productos fabricados con material reciclado.</span
-        >
-      </p>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-4 col-md-4 col-12 mt-5">
-        <div class="row">
-          <div id="col_historia" class="_2Hij5" data-testid="richTextElement">
-            <h6
-              class="font_6"
-              style="line-height: normal; text-align: center; font-size: 22px"
-            >
-              <span style="letter-spacing: normal">Nuestra Historia</span>
-            </h6>
-          </div>
-        </div>
-
-        <div class="row">
-          <div id="p_historia" class="_2Hij5" data-testid="richTextElement">
-            <p
-              id="parrafo_historia"
-              class="font_8"
-              style="line-height: 1.5em; text-align: center; font-size: 15px"
-            >
-              <span style="letter-spacing: normal"
-                >Somos un ONG sin fines de lucro que ayuda a los perrit@s y
-                gatit@s que más lo necesitan.</span
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-4 col-12 mt-5">
-        <div class="row">
-          <div id="col_hacemos" class="_2Hij5" data-testid="richTextElement">
-            <h6
-              class="font_6"
-              style="line-height: normal; text-align: center; font-size: 22px"
-            >
-              <span style="letter-spacing: normal">Que hacemos?</span>
-            </h6>
-          </div>
-        </div>
-
-        <div class="row">
-          <div id="p_hacemos" class="_2Hij5" data-testid="richTextElement">
-            <p
-              id="parrafo_historia"
-              class="font_8"
-              style="line-height: 1.5em; text-align: center; font-size: 15px"
-            >
-              <span style="letter-spacing: normal"
-                >Nuestra tienda ayuda a las perrit@s y gatit@s callejer@s,
-                abandonad@s o que necesitan rehabilitación.</span
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-4 col-12 mt-5">
-        <div class="row">
-          <div id="col_horario" class="_2Hij5" data-testid="richTextElement">
-            <h6
-              class="font_6"
-              style="line-height: normal; text-align: center; font-size: 22px"
-            >
-              <span style="letter-spacing: normal">Horario de atencion</span>
-            </h6>
-          </div>
-        </div>
-        <div class="row">
-          <div id="p_horario" class="_2Hij5" data-testid="richTextElement">
-            <p
-              id="parrafo_historia"
-              class="font_8"
-              style="line-height: 1.5em; text-align: center; font-size: 15px"
-            >
-              <span style="letter-spacing: normal">9:00 am - 18:00 pm</span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <br />
+      <br />
     </div>
     <footer class="footer">
       <div id="row_footer" class="row">

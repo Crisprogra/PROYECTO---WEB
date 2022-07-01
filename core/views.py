@@ -1,7 +1,9 @@
 
-from django.shortcuts import render
-from .forms import RegistroForm, ContactoForm, CustomUserForm
+from django.shortcuts import redirect, render
+from .forms import RegistroForm, ContactoForm, CustomUserCreationForm
 from .models import producto
+from django.contrib.auth import login,authenticate
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request,'core/index.html')
@@ -15,11 +17,24 @@ def index3(request):
 def index4(request):
     return render(request,'core/index4.html')
 
-def registro(request):
+def registrar(request):
         datos_registro = {
-            'form': CustomUserForm()
+            'form': CustomUserCreationForm()
         }
-        return render(request,'core/registration/registrar.html',datos_registro)
+        if request.method == 'POST':
+            formulario_registro = CustomUserCreationForm(datos_registro=request.POST)
+            
+            if formulario_registro.is_valid:
+                formulario_registro.save()
+                #autenticar al usuario y redirigirlo al home 
+                username = formulario_registro.cleaned_data['username']
+                password = formulario_registro.cleaned_data['password1']
+                user = authenticate(username=username , password=password)
+                login(request, user)
+                return redirect (to="index")
+
+
+        return render(request,'registration/registrar.html',datos_registro)
     
 
 def formulario_registro(request):

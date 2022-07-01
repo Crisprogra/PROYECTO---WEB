@@ -3,6 +3,8 @@ from django import forms
 from django.forms import ModelForm
 from .models import contacto, registro
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 
 #creando una clase para el formulario desde la base de datos
 class RegistroForm(ModelForm):
@@ -19,7 +21,7 @@ class ContactoForm(ModelForm):
         fields = ['nombreContacto','correoContacto','comentarioContacto']
 
 
-class CustomUserForm(UserCreationForm):
+class CustomUserCreationForm(UserCreationForm):
 
     
     pass

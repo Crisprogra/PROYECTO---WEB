@@ -63,15 +63,19 @@
         {% csrf_token %}
         <div class="form-group">{{ form }}</div>
 
-        <input
-          type="submit"
-          class="btn btn-primary mt-3"
-          id="enviar"
-          value="Ingresar"
-        />
-        <li>
+          <br>
+          
           <a href="http://127.0.0.1:8000/">Ir al Home</a>
-        </li>
+          
+
+          <input
+            type="submit"
+            class="btn btn-primary float-right "
+            id="enviar"
+            value="Ingresar"
+          />
+
+        </div>
 
         <div id="error" class="alert alert-danger hide" role="alert">
           {{ message }}

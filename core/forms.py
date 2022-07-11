@@ -1,7 +1,7 @@
 from dataclasses import fields
 from django import forms
 from django.forms import ModelForm
-from .models import contacto, registro
+from .models import contacto, registro, producto
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -21,7 +21,18 @@ class ContactoForm(ModelForm):
         fields = ['nombreContacto','correoContacto','comentarioContacto']
 
 
+class ProductoForm(ModelForm):
+
+    class Meta:
+        model = producto
+        fields = ['codigoProducto', 'imagenProducto', 'nombreProducto','descripcionProducto', 'precioProducto']
+
+
+
+
 class CustomUserCreationForm(UserCreationForm):
 
     
     pass
+
+

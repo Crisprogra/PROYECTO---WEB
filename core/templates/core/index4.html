@@ -25,7 +25,12 @@
             
           <P class=" ">Tienda de accesorios para tus mascotas</h2>
         </div>
-        <div class ="col-lg-3 col-md-4 col-12">
+        <div class="col-lg-3 col-md-4 col-12 mt-4">
+          {% if user.is_authenticated %}
+
+          <h2 id="usuario_conectado">@{{user.username}}</h2>
+
+          {% endif %}
         </div>    
     </div>
     <main>
@@ -44,6 +49,20 @@
                 <li class="nav-item">
                   <a href="Contacto" class="nav-link">Contacto</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a href="{% url 'logout' %}" class="nav-link">Cerrar Sesión</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a href="{% url 'login' %}" class="nav-link">Iniciar Sesión</a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{% url 'registrar' %}" class="nav-link">Registrarme</a>
+                </li>
+
+                {% endif %}
               </ul>
             </header>
         </div>        

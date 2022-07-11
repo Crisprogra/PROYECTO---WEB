@@ -1,9 +1,14 @@
 
-from django.shortcuts import redirect, render
-from .forms import RegistroForm, ContactoForm, CustomUserCreationForm
+import django
+from django.http import Http404
+from django.shortcuts import redirect, render, get_object_or_404
+from .forms import RegistroForm, ContactoForm, CustomUserCreationForm, ProductoForm
 from .models import producto
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.http import Http404
+from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 def index(request):
     return render(request,'core/index.html')
@@ -74,7 +79,79 @@ def index4(request):
         
 def index3(request):
     productos = producto.objects.all()
+    page = request.GET.get('page',1)
+
+    try:
+        paginator = Paginator(productos,4)
+        productos = paginator.page(page)
+    except:
+        raise Http404
     datos = {
-        'productos' : productos
+        'entity' : productos,
+        'paginator': paginator
     }
-    return render(request,'core/index3.html',datos)       
+    return render(request,'core/index3.html',datos)   
+
+@permission_required('core.add_producto')
+def agregar_producto(request):
+
+    data = {
+        'form': ProductoForm()
+    }
+
+    if request.method == 'POST':
+            formulario = ProductoForm(request.POST)
+            
+            if formulario.is_valid:
+                formulario.save()
+                data['message'] = 'Guardado correctamente'
+            else:
+                data['message'] = 'Hubo un problema'
+
+
+    return render(request,'core/agregar.html',data )
+
+@permission_required('core.view_producto')
+def listar_producto(request):
+    productos = producto.objects.all()
+    page = request.GET.get('page',1)
+
+    try:
+        paginator = Paginator(productos,4)
+        productos = paginator.page(page)
+    except:
+        raise Http404
+
+    data = {
+        'entity' : productos,
+        'paginator': paginator
+    }
+
+    return render (request, 'core/listar.html', data)
+
+@permission_required('core.change_producto')
+def modificar_producto(request,codigoProducto):
+    productos = get_object_or_404(producto,codigoProducto=codigoProducto)
+
+    data = {
+        'form': ProductoForm(instance=productos)
+    }
+
+    if request.method == 'POST':
+            formulario = ProductoForm(request.POST, instance=productos)
+            
+            if formulario.is_valid:
+                formulario.save()
+                return redirect(to="listar_producto")
+            else:
+                data['message'] = 'Hubo un problema'
+
+
+    return render(request, 'core/modificar.html',data )
+
+@permission_required('core.delete_producto')
+def eliminar_producto(reques,codigoProducto):
+    productos = get_object_or_404(producto,codigoProducto=codigoProducto)
+    productos.delete()
+    return redirect(to="listar_producto")
+

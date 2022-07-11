@@ -68,33 +68,40 @@
       crossorigin="anonymous"
     ></script>
     <br />
-    <div class="row -lg-3 col-md-3 col">
-      <h1 class="title">Registrarme</h1>
-    </div>
+   
     <br />
-    <div class="formulario_login col-lg-3 col-md-3 col">
-      <form method="post" action="" id="">
-        {% csrf_token %}
-        <div class="form-group">{{ form }}</div>
+    <div class="row">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+              <h2 class="title">Registrarme</h2>
+              <form method="post" action="" id="">
+                {% csrf_token %}
+                <div class="form-group">{{ form }}</div>
 
-        <input
-          type="submit"
-          class="btn btn-primary mt-3"
-          id="enviar"
-          value="enviar"
-        />
-        <input
-          type="reset"
-          class="btn btn-danger mt-3"
-          id="limpiar"
-          value="limpiar"
-        />
-        <div id="error" class="alert alert-danger hide" role="alert">
-          {{ message }}
-        </div>
-      </form>
-      <br />
-      <br />
+                <br>
+                
+                  <a href="http://127.0.0.1:8000/">Ir al Home</a>
+                
+                  <div class="d-flex justify-content-end">
+                    <input
+                      type="submit"
+                      class="btn btn-primary float-right "
+                      id="enviar"
+                      value="Registrarme"
+                    />
+                  </div>
+                </div>
+
+                <div id="error" class="alert alert-danger hide" role="alert">
+                  {{ message }}
+                </div>
+              </form>
+              <br />
+              <br />
+            </div>
+        </div>   
+      </div>
     </div>
     <footer class="footer">
       <div id="row_footer" class="row">

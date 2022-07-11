@@ -43,9 +43,9 @@
 
         <div class="col-lg-3 col-md-4 col-12 mt-4">
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a href="#" id="usuario_conectado">@{{user.username}}</a>
-          </li>
+
+          <h2 id="usuario_conectado">@{{user.username}}</h2>
+
           {% endif %}
         </div>
       </div>
@@ -66,6 +66,17 @@
             <li class="nav-item">
               <a href="Contacto" class="nav-link">Contacto</a>
             </li>
+            {% if perms.core.add_producto %}
+            <li class="nav-item">
+              <a href="{% url 'agregar_producto' %}" class="nav-link">Agregar Producto</a>
+            </li>
+            {% endif %}
+
+            {% if perms.core.view_producto %}
+            <li class="nav-item">
+              <a href="{% url 'listar_producto' %}" class="nav-link">Listar Productos</a>
+            </li>
+            {% endif %}
 
             {% if user.is_authenticated %}
             <li class="nav-item">

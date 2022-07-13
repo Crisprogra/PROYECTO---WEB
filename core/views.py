@@ -2,6 +2,8 @@
 import django
 from django.http import Http404
 from django.shortcuts import redirect, render, get_object_or_404
+
+from .templates.core import carrito
 from .forms import RegistroForm, ContactoForm, CustomUserCreationForm, ProductoForm
 from .models import producto
 from django.contrib.auth import authenticate, login
@@ -82,12 +84,12 @@ def index3(request):
     page = request.GET.get('page',1)
 
     try:
-        paginator = Paginator(productos,4)
+        paginator = Paginator(productos,6)
         productos = paginator.page(page)
     except:
         raise Http404
     datos = {
-        'entity' : productos,
+        'entity' : productos, 
         'paginator': paginator
     }
     return render(request,'core/index3.html',datos)   
@@ -117,7 +119,7 @@ def listar_producto(request):
     page = request.GET.get('page',1)
 
     try:
-        paginator = Paginator(productos,4)
+        paginator = Paginator(productos,6)
         productos = paginator.page(page)
     except:
         raise Http404
@@ -154,4 +156,27 @@ def eliminar_producto(reques,codigoProducto):
     productos = get_object_or_404(producto,codigoProducto=codigoProducto)
     productos.delete()
     return redirect(to="listar_producto")
+
+def agregar_producto_carrito(request,producto_codigo):
+    carrito = carrito(request)
+    prod = producto.objects.get(codigoProducto=producto_codigo)
+    carrito.agregar(prod)
+    return redirect(request,'core/index3.html')
+
+def eliminar_producto_carrito(request,producto_codigo):
+    carrito = carrito(request)
+    prod = producto.objects.get(codigoProducto=producto_codigo)
+    carrito.eliminar(prod)
+    return redirect(request,'core/index3.html')
+
+def restar_producto_carrito(request,producto_codigo):
+    carrito = carrito(request)
+    prod = producto.objects.get(codigoProducto=producto_codigo)
+    carrito.restar(prod)
+    return redirect(request,'core/index3.html')
+
+def limpiar_carrito(request):
+    carrito = carrito(request)
+    carrito.limpiar()
+    return redirect(request,'core/index3.html')
 

@@ -75,22 +75,29 @@
 
   <br><br>
   <div class="row">
-    {% for pro in entity%}
-    <div class="card  col-lg-3 col-md-3 col-12  " style="width: 18rem;">
-      <img src="{{pro.imagenProducto}}" class="card-img-top" alt="{{pro.nombreProducto}}">
-      <div class="card-body">
-        <h5 class="card-title">{{pro.codigoProducto}}</h5>
-        <p id="p_descripcion" class="card-text text-align:left">{{pro.descripcionProducto}}</p>
-        <p id="p_precio" class="card-text text-align:left">${{pro.precioProducto}}</p>
-        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+    <div class="col-8">
+      <div class="row">
+        {% for pro in entity%}
+        <div class="card  col-lg-3 col-md-3 col-12  " style="width: 18rem;">
+          <img src="{{pro.imagenProducto}}" class="card-img-top" alt="{{pro.nombreProducto}}">
+          <div class="card-body">
+            <h5 class="card-title">{{pro.codigoProducto}}</h5>
+            <p id="p_descripcion" class="card-text text-align:left">{{pro.descripcionProducto}}</p>
+            <p id="p_precio" class="card-text text-align:left">${{pro.precioProducto}}</p>
+            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          </div>
+        </div>  
+        {% endfor%}
+      
+        <div>
+          <br>
+          <br>
+          {% include 'core/paginator.html' %}
+        </div>
       </div>
-    </div>  
-    {% endfor%}
-    
-    <div>
-      <br>
-      <br>
-      {% include 'core/paginator.html' %}
+    </div>
+    <div class="col-4">
+      <h2>Carrito</h2>
     </div>
   </div>
 

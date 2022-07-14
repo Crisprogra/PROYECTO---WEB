@@ -1,4 +1,5 @@
 
+from xml.dom.minidom import Entity
 import django
 from django.http import Http404
 from django.shortcuts import redirect, render, get_object_or_404
@@ -159,24 +160,24 @@ def eliminar_producto(reques,codigoProducto):
 
 def agregar_producto_carrito(request,producto_codigo):
     carrito = carrito(request)
-    prod = producto.objects.get(codigoProducto=producto_codigo)
-    carrito.agregar(prod)
+    entity = producto.objects.get(codigoProducto=producto_codigo)
+    carrito.agregar(entity)
     return redirect(request,'core/index3.html')
 
 def eliminar_producto_carrito(request,producto_codigo):
     carrito = carrito(request)
-    prod = producto.objects.get(codigoProducto=producto_codigo)
-    carrito.eliminar(prod)
+    entity= producto.objects.get(codigoProducto=producto_codigo)
+    carrito.eliminar(entity)
     return redirect(request,'core/index3.html')
 
 def restar_producto_carrito(request,producto_codigo):
     carrito = carrito(request)
-    prod = producto.objects.get(codigoProducto=producto_codigo)
-    carrito.restar(prod)
+    entity = producto.objects.get(codigoProducto=producto_codigo)
+    carrito.restar(entity)
     return redirect(request,'core/index3.html')
 
 def limpiar_carrito(request):
-    carrito = carrito(request)
+    carrito = carrito.Carrito(request)
     carrito.limpiar()
     return redirect(request,'core/index3.html')
 

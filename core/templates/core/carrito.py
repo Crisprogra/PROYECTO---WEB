@@ -3,7 +3,7 @@ from math import prod
 from operator import truediv
 
 
-class Carrito:
+class carrito:
     def __init__(self,request):
         self.request = request
         self.session = request.session
@@ -18,7 +18,7 @@ class Carrito:
         codigo = str(producto.codigoProducto)
         if codigo not in self.carrito.keys():
             self.carrito[codigo]= {
-                "Codigo": producto.codigoProducto,
+                "Codigo_producto": producto.codigoProducto,
                 "Nombre": producto.nombreProducto,
                 "Total": producto.precioProducto,
                 "Cantidad": 1

@@ -14,9 +14,9 @@ urlpatterns =[
     path('listar-producto',listar_producto,name="listar_producto"),
     path('modificar-producto/<codigoProducto>',modificar_producto,name="modificar_producto"),
     path('eliminar-producto/<codigoProducto>',eliminar_producto,name="eliminar_producto"),
-    path('agregar/<int:producto_id>/', agregar_producto_carrito, name="Add"),
-    path('eliminar/<int:producto_id>/', eliminar_producto_carrito, name="Del"),
-    path('restar/<int:producto_id>/', restar_producto_carrito, name="Sub"),
+    path('agregar/<int:Codigo_producto>/', agregar_producto_carrito, name="Add"),
+    path('eliminar/<int:Codigo_producto>/', eliminar_producto_carrito, name="Del"),
+    path('restar/<int:Codigo_producto>/', restar_producto_carrito, name="Sub"),
     path('limpiar/', limpiar_carrito, name="CLS"),
 
    

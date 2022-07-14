@@ -86,7 +86,7 @@
             <p id="p_precio" class="card-text text-align:left">${{pro.precioProducto}}</p>
              <!--
               Aqui en este boton Deberia ir el siguiente 
-              enlace en el href = {% url 'Add' pro.producto_codigo %}
+              enlace en el href = {% url 'Add' pro.codigoProducto %
               quiza hay un error con el entity que se cambio a productos en el view de la tienda
               ya que para paginar la tienda se cambio la variable que selecciona todos los objetos
               de la tabla productos por la variable entity.... no pude encontrar el error, pero
@@ -94,7 +94,7 @@
               me aprece excelente el codigo que encontre y recicle 
               ojala les sirva y lo puedan habilitar!
             -->
-            <a href="{% url 'Add' pro.codigoProducto %}"  class="btn btn-primary">Agregar al carrito</a>
+            <a href="#"  class="btn btn-primary">Agregar al carrito</a>
            
           </div>
         </div>  

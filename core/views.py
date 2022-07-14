@@ -4,7 +4,7 @@ import django
 from django.http import Http404
 from django.shortcuts import redirect, render, get_object_or_404
 
-from .templates.core.carrito import carrito
+from .templates.core.carrito import Carrito
 from .forms import RegistroForm, ContactoForm, CustomUserCreationForm, ProductoForm
 from .models import producto
 from django.contrib.auth import authenticate, login
@@ -159,25 +159,26 @@ def eliminar_producto(request,codigoProducto):
     return redirect(to="listar_producto")
 
 def agregar_producto_carrito(request,Codigo_producto):
-    carrito = carrito(request)
-    entity = producto.objects.get(codigoProducto=Codigo_producto)
-    carrito.agregar(entity)
+    carrito = Carrito(request)
+    p = producto.objects.get(codigoProducto=Codigo_producto)
+    carrito.agregar(p)
     return redirect(request,'core/index3.html')
 
 def eliminar_producto_carrito(request,Codigo_producto):
+    carrito = Carrito(request)
     carrito = carrito(request)
-    entity= producto.objects.get(codigoProducto=Codigo_producto)
-    carrito.eliminar(entity)
+    p= producto.objects.get(codigoProducto=Codigo_producto)
+    carrito.eliminar(p)
     return redirect(request,'core/index3.html')
 
 def restar_producto_carrito(request,Codigo_producto):
-    carrito = carrito(request)
-    entity = producto.objects.get(codigoProducto=Codigo_producto)
-    carrito.restar(entity)
+    carrito = Carrito(request)
+    p = producto.objects.get(codigoProducto=Codigo_producto)
+    carrito.restar(p)
     return redirect(request,'core/index3.html')
 
 def limpiar_carrito(request):
-    carrito = carrito.Carrito(request)
+    carrito = Carrito(request)
     carrito.limpiar()
     return redirect(request,'core/index3.html')
 

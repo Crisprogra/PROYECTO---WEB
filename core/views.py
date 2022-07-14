@@ -4,7 +4,7 @@ import django
 from django.http import Http404
 from django.shortcuts import redirect, render, get_object_or_404
 
-from .templates.core.carrito import Carrito
+from .carrito import Carrito
 from .forms import RegistroForm, ContactoForm, CustomUserCreationForm, ProductoForm
 from .models import producto
 from django.contrib.auth import authenticate, login
@@ -89,11 +89,11 @@ def index3(request):
         productos = paginator.page(page)
     except:
         raise Http404
-    datos = {
+    data = {
         'entity' : productos, 
         'paginator': paginator
     }
-    return render(request,'core/index3.html',datos)   
+    return render(request,'core/index3.html',data)   
 
 @permission_required('core.add_producto')
 def agregar_producto(request):

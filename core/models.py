@@ -23,7 +23,7 @@ class producto(models.Model):
     precioProducto = models.IntegerField(verbose_name='Precio del producto')    
 
     def __str__(self) :
-        return  self.nombreProducto
+        return  f'{self.nombreProducto} -> {self.precioProducto}'
   
 
 

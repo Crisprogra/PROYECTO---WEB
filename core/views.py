@@ -158,27 +158,27 @@ def eliminar_producto(request,codigoProducto):
     productos.delete()
     return redirect(to="listar_producto")
 
-def agregar_producto_carrito(request,Codigo_producto):
+def agregar_producto_carrito(request,codigoProducto):
     carrito = Carrito(request)
-    p = producto.objects.get(codigoProducto=Codigo_producto)
+    p = producto.objects.get(codigoProducto=codigoProducto)
     carrito.agregar(p)
-    return redirect(request,'core/index3.html')
+    return redirect(to="index3")
 
-def eliminar_producto_carrito(request,Codigo_producto):
+def eliminar_producto_carrito(request,codigoProducto):
     carrito = Carrito(request)
     carrito = carrito(request)
-    p= producto.objects.get(codigoProducto=Codigo_producto)
+    p= producto.objects.get(codigoProducto=codigoProducto)
     carrito.eliminar(p)
-    return redirect(request,'core/index3.html')
+    return redirect(to="index3")
 
-def restar_producto_carrito(request,Codigo_producto):
+def restar_producto_carrito(request,codigoProducto):
     carrito = Carrito(request)
-    p = producto.objects.get(codigoProducto=Codigo_producto)
+    p = producto.objects.get(codigoProducto=codigoProducto)
     carrito.restar(p)
-    return redirect(request,'core/index3.html')
+    return redirect(to="index3")
 
 def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
-    return redirect(request,'core/index3.html')
+    return redirect(to="index3")
 

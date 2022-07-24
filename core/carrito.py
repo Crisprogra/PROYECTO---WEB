@@ -24,11 +24,12 @@ class Carrito:
                 "codigoProducto": p.codigoProducto,
                 "Nombre": p.nombreProducto,
                 "Total": p.precioProducto,
+                "Precio": p.precioProducto,
                 "Cantidad": 1,
             }
         else:
-            self.carrito[p.codigoProducto]["Cantidad"]+=1
-            self.carrito[p.codigoProducto]["Total"]= p.precioProducto
+            self.carrito[codigoProducto]["Cantidad"] += 1
+            self.carrito[codigoProducto]["Total"] += p.precioProducto
         self.guardar_carrito()
     
     def guardar_carrito(self):

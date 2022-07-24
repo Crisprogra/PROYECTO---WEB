@@ -166,7 +166,6 @@ def agregar_producto_carrito(request,codigoProducto):
 
 def eliminar_producto_carrito(request,codigoProducto):
     carrito = Carrito(request)
-    carrito = carrito(request)
     p= producto.objects.get(codigoProducto=codigoProducto)
     carrito.eliminar(p)
     return redirect(to="index3")

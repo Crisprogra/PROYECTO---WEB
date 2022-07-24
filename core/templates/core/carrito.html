@@ -17,8 +17,10 @@
           <td>{{value.Nombre}}</td>
           <td>{{value.Precio}}</td>
           <td>{{value.Cantidad}}
-            <a href="{% url 'Add' value.codigoProducto %}" class="badge btn btn-dark badge-dark">+</a>
+            
             <a href="{% url 'Sub' value.codigoProducto %}" class="badge btn btn-dark badge-dark">-</a>
+            <a href="{% url 'Add' value.codigoProducto %}" class="badge btn btn-dark badge-dark">+</a>
+            <a href="{% url 'Del' value.codigoProducto %}" class="btn btn-danger btn-sm ">Eliminar</a>
           </td>
         </tr>
       {% endfor %}
@@ -28,6 +30,8 @@
               <div class="alert alert-danger text-center"> Sin Productos </div>
           </td>
       </tr>
+      
+     
       {% endif %}
         <tr>
           <th scope="row">Total:</th>

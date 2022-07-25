@@ -78,7 +78,7 @@
     <div class="col-8">
       <div class="row">
         {% for p in entity%}
-        <div class="card  col-lg-3 col-md-3 col-12  " style="width: 18rem;">
+        <div class="card  col-lg-3 col-md-3 col-sm-12  " style="width: 18rem;">
           <img src="{{p.imagenProducto}}" class="card-img-top" alt="{{pro.nombreProducto}}">
           <div class="card-body">
             <h5 class="card-title">{{p.codigoProducto}}</h5>
@@ -108,8 +108,9 @@
       </div>
     </div>
     <div class="col-4">
-      {% include 'core/carrito.html' %}
-
+      <div class="row">
+        {% include 'core/carrito.html' %}
+      </div>
     </div>
   </div>
 

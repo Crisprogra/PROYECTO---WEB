@@ -85,7 +85,7 @@ def index3(request):
     page = request.GET.get('page',1)
 
     try:
-        paginator = Paginator(productos,6)
+        paginator = Paginator(productos,3)
         productos = paginator.page(page)
     except:
         raise Http404
@@ -120,7 +120,7 @@ def listar_producto(request):
     page = request.GET.get('page',1)
 
     try:
-        paginator = Paginator(productos,6)
+        paginator = Paginator(productos,3)
         productos = paginator.page(page)
     except:
         raise Http404

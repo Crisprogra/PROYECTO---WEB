@@ -97,7 +97,10 @@
 
                     <tr>
                         <td>{{ p.codigoProducto }}</td>
-                        <td>{{ p.imagenProducto }}</td>
+                        <td>
+                        <img src="{{ p.imagenProducto }}" height="100"/>
+                          
+                        </td>
                         <td>{{ p.nombreProducto }}</td>
                         <td>{{ p.descripcionProducto }}</td>
                         <td>{{ p.precioProducto }}</td>

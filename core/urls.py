@@ -1,7 +1,8 @@
 from django import urls
 from django.urls import path
 from .views import agregar_producto_carrito, eliminar_producto_carrito, index, index2, index3, index4, formulario_registro, registrar,agregar_producto,listar_producto, modificar_producto,eliminar_producto, restar_producto_carrito,limpiar_carrito
-
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
 
 urlpatterns =[
     path('',index,name="index"),
@@ -23,4 +24,4 @@ urlpatterns =[
 
 
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
